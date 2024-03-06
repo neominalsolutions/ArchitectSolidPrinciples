@@ -12,15 +12,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<SolidAPI.Data.AppContext>(opt =>
-{
-  opt.UseSqlServer(builder.Configuration.GetConnectionString("TicketConn"));
-});
 
 // IoC registeration
 builder.Services.AddScoped<IEmployeeRepository, EFEmployeeRepository>();
 builder.Services.AddScoped<TicketRequestService>();
 builder.Services.AddScoped<TicketManager>();
+
+
+builder.Services.AddDbContext<SolidAPI.Data.AppContext>(opt =>
+{
+  opt.UseSqlServer(builder.Configuration.GetConnectionString("TicketConn"));
+});
+
+
 
 var app = builder.Build();
 

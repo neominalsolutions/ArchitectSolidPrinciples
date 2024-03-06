@@ -19,7 +19,12 @@ namespace SolidAPI.Repositories
       return new Employee("Asli", "Can");
     }
 
-    public void Save()
+    public Employee FindByWithTickets(Guid EmployeeId)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void Save(Employee? employee)
     {
       throw new NotImplementedException();
     }

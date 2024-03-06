@@ -11,7 +11,6 @@ namespace SolidAPI.Data.Config
       builder.HasKey(x => x.TicketId);
       builder.Property(x => x.Title).IsRequired();
       builder.Property(x => x.Description).IsRequired(false).HasMaxLength(200);
-      builder.HasMany(x => x.TicketAssigments);
     }
   }
 }

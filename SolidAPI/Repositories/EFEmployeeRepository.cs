@@ -13,11 +13,22 @@ namespace SolidAPI.Repositories
       this.appContext = appContext;
     }
 
+    public Employee FindByWithTickets(Guid EmployeeId)
+    {
+      var entity = this.appContext.Employees.AsNoTracking().Include(x => x.Tickets).FirstOrDefault(x => x.EmployeeId == EmployeeId);
+
+
+      if (entity is null)
+      {
+        throw new Exception("Entity NotFound");
+      }
+
+      return entity;
+    }
+
     public Employee FindById(Guid EmployeeId)
     {
-      var entity = this.appContext.Employees.Include(x=> x.Tickets).FirstOrDefault(x=> x.EmployeeId == EmployeeId);
-
-
+      var entity = this.appContext.Employees.FirstOrDefault(x=> x.EmployeeId == EmployeeId);
 
 
       if(entity is null)
@@ -43,19 +54,23 @@ namespace SolidAPI.Repositories
       }
     }
 
-    public void Save()
+    public void Save(Employee? employee)
     {
 
 
       try
       {
-        appContext.SaveChanges();
+
+        if(employee is not null && employee.Tickets.Count > 0)
+        {
+          this.appContext.TicketAssigments.AddRangeAsync(employee.Tickets);
+        }
 
        
+        this.appContext.SaveChanges();
       }
-      catch (Exception ex)
+      catch (DbUpdateConcurrencyException ex)
       {
-
         throw ex;
       }
     
@@ -63,24 +78,7 @@ namespace SolidAPI.Repositories
 
     public void Update(Employee employee)
     {
-      //var emp = this.appContext.Employees.Find(employee.EmployeeId);
-      employee.Department = "IT";
-
-      //foreach (var item in employee.Tickets)
-      //{
-      //  emp.Tickets.Add(item);
-      //}
-
-
-      //var state =  this.appContext.Entry(employee).State;
-
-      ////emp.Department = employee.Department;
-      //this.appContext.Entry(emp).State = EntityState.Modified;
-
-      this.appContext.Update(employee);
-
-
-      this.appContext.SaveChanges();
+      this.appContext.Employees.Update(employee);
     }
   }
 }

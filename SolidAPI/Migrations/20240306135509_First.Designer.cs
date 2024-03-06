@@ -12,14 +12,14 @@ using SolidAPI.Data;
 namespace SolidAPI.Migrations
 {
     [DbContext(typeof(Data.AppContext))]
-    [Migration("20240306125505_Second")]
-    partial class Second
+    [Migration("20240306135509_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.27")
+                .HasAnnotation("ProductVersion", "6.0.25")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -96,7 +96,7 @@ namespace SolidAPI.Migrations
 
             modelBuilder.Entity("SolidAPI.Entities.TicketAssigment", b =>
                 {
-                    b.Property<Guid>("TicketAssigmentId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -115,11 +115,9 @@ namespace SolidAPI.Migrations
                     b.Property<Guid>("TicketId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("TicketAssigmentId");
+                    b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
-
-                    b.HasIndex("TicketId");
 
                     b.ToTable("TicketAssigments");
                 });
@@ -140,12 +138,6 @@ namespace SolidAPI.Migrations
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("SolidAPI.Entities.Ticket", null)
-                        .WithMany("TicketAssigments")
-                        .HasForeignKey("TicketId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("SolidAPI.Entities.Customer", b =>
@@ -156,11 +148,6 @@ namespace SolidAPI.Migrations
             modelBuilder.Entity("SolidAPI.Entities.Employee", b =>
                 {
                     b.Navigation("Tickets");
-                });
-
-            modelBuilder.Entity("SolidAPI.Entities.Ticket", b =>
-                {
-                    b.Navigation("TicketAssigments");
                 });
 #pragma warning restore 612, 618
         }

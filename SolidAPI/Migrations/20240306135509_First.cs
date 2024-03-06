@@ -61,7 +61,7 @@ namespace SolidAPI.Migrations
                 name: "TicketAssigments",
                 columns: table => new
                 {
-                    TicketAssigmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TicketId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EmployeeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EstimatedHour = table.Column<int>(type: "int", nullable: false),
@@ -70,7 +70,7 @@ namespace SolidAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TicketAssigments", x => x.TicketAssigmentId);
+                    table.PrimaryKey("PK_TicketAssigments", x => x.Id);
                     table.ForeignKey(
                         name: "FK_TicketAssigments_Employees_EmployeeId",
                         column: x => x.EmployeeId,

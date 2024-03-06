@@ -7,8 +7,6 @@
     public string Description { get; set; }
     public Guid CustomerId { get; set; }
 
-    // Ticket giren müşteri
-    public List<TicketAssigment> TicketAssigments { get; set; }
 
   }
 }

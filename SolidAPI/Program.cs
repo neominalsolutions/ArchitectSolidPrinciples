@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using SolidAPI.Bussiness;
 using SolidAPI.Repositories;
 using SolidAPI.UseCases;
 
@@ -10,9 +12,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<SolidAPI.Data.AppContext>(opt =>
+{
+  opt.UseSqlServer(builder.Configuration.GetConnectionString("TicketConn"));
+});
+
 // IoC registeration
 builder.Services.AddScoped<IEmployeeRepository, EFEmployeeRepository>();
 builder.Services.AddScoped<TicketRequestService>();
+builder.Services.AddScoped<TicketManager>();
 
 var app = builder.Build();
 

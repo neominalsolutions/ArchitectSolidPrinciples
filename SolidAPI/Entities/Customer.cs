@@ -1,5 +1,6 @@
 ﻿namespace SolidAPI.Entities
 {
+  // POCO => herhangi bir teknoloji bağımlılığı olmayan a plain old CLR object olmalıdır. 
   public class Customer
   {
     public Guid CustomerId { get; set; }
@@ -9,6 +10,12 @@
 
     // uni-directional association
     public ICollection<Ticket> Tickets { get; set; }
+
+
+    public Customer()
+    {
+
+    }
 
   }
 }

@@ -11,6 +11,11 @@
 
     public int TicketAssigmentType { get; init; }
 
+    public TicketAssigment()
+    {
+
+    }
+
 
     public TicketAssigment(Guid ticketId, Guid employeeId, int estimatedHour, int ticketAssigmentType)
     {

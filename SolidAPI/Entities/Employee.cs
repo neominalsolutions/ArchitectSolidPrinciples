@@ -12,6 +12,11 @@
     private List<TicketAssigment> ticketAssigments = new List<TicketAssigment>();
     public IReadOnlyList<TicketAssigment> Tickets => ticketAssigments;
 
+    public Employee()
+    {
+
+    }
+
     public Employee(string name, string surname)
     {
       Name = name.Trim();

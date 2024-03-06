@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SolidAPI.Data.Migs
+namespace SolidAPI.Migrations
 {
     public partial class First : Migration
     {

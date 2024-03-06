@@ -1,4 +1,5 @@
-﻿using SolidAPI.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SolidAPI.Data;
 using SolidAPI.Entities;
 
 namespace SolidAPI.Repositories
@@ -14,7 +15,10 @@ namespace SolidAPI.Repositories
 
     public Employee FindById(Guid EmployeeId)
     {
-      var entity = this.appContext.Employees.Find(EmployeeId);
+      var entity = this.appContext.Employees.Include(x=> x.Tickets).FirstOrDefault(x=> x.EmployeeId == EmployeeId);
+
+
+
 
       if(entity is null)
       {
@@ -41,12 +45,42 @@ namespace SolidAPI.Repositories
 
     public void Save()
     {
-      this.appContext.SaveChanges();
+
+
+      try
+      {
+        appContext.SaveChanges();
+
+       
+      }
+      catch (Exception ex)
+      {
+
+        throw ex;
+      }
+    
     }
 
     public void Update(Employee employee)
     {
-      this.appContext.Employees.Update(employee);
+      //var emp = this.appContext.Employees.Find(employee.EmployeeId);
+      employee.Department = "IT";
+
+      //foreach (var item in employee.Tickets)
+      //{
+      //  emp.Tickets.Add(item);
+      //}
+
+
+      //var state =  this.appContext.Entry(employee).State;
+
+      ////emp.Department = employee.Department;
+      //this.appContext.Entry(emp).State = EntityState.Modified;
+
+      this.appContext.Update(employee);
+
+
+      this.appContext.SaveChanges();
     }
   }
 }

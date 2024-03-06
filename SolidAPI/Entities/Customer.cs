@@ -12,10 +12,7 @@
     public ICollection<Ticket> Tickets { get; set; }
 
 
-    public Customer()
-    {
-
-    }
+   
 
   }
 }

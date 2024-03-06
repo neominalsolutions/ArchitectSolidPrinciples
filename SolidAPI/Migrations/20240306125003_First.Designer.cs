@@ -9,10 +9,10 @@ using SolidAPI.Data;
 
 #nullable disable
 
-namespace SolidAPI.Data.Migs
+namespace SolidAPI.Migrations
 {
-    [DbContext(typeof(AppContext))]
-    [Migration("20240306113650_First")]
+    [DbContext(typeof(Data.AppContext))]
+    [Migration("20240306125003_First")]
     partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -9,7 +9,7 @@ namespace SolidAPI.Data.Config
     public void Configure(EntityTypeBuilder<Employee> builder)
     {
       builder.HasKey(x => x.EmployeeId);
-      builder.HasMany(x => x.Tickets).WithOne().HasForeignKey(x=> x.EmployeeId); // 1 to Many ilişki
+      builder.HasMany(x => x.Tickets); // 1 to Many ilişki
       builder.Property(x => x.Department).IsRequired(false); // opsiyonel
 
     }

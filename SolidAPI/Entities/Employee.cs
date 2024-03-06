@@ -10,7 +10,7 @@
     // çalışana atanan görevler
 
     private List<TicketAssigment> ticketAssigments = new List<TicketAssigment>();
-    public IReadOnlyList<TicketAssigment> Tickets => ticketAssigments;
+    public List<TicketAssigment> Tickets  = new List<TicketAssigment>();
 
     public Employee()
     {
@@ -29,7 +29,7 @@
     // Buna clean code Information Expert ismi verilir.
     public void AddTicket(Guid TicketId, int estimatedHour, int ticketAssigmentType)
     {
-      ticketAssigments.Add(new TicketAssigment(employeeId:EmployeeId,ticketId:TicketId,estimatedHour:estimatedHour, ticketAssigmentType: ticketAssigmentType));
+      Tickets.Add(new TicketAssigment(employeeId:EmployeeId,ticketId:TicketId,estimatedHour:estimatedHour, ticketAssigmentType: ticketAssigmentType));
     }
 
 

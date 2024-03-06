@@ -25,7 +25,8 @@ namespace SolidAPI.Bussiness
         if(emp is not null)
         {
           emp.AddTicket(ticketId, estimatedHour, ticketAssigmentType);
-          employeeRepository.Save();
+          employeeRepository.Update(emp);
+          // employeeRepository.Save();
         } 
         else
         {

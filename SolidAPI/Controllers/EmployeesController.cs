@@ -37,9 +37,16 @@ namespace SolidAPI.Controllers
     public IActionResult Create()
     {
 
-      var employee = new Employee("Ali", "Can");
-      this.employeeRepository.Create(employee);
+      this.employeeRepository.Delete(new Guid("be11eebc-c3d8-45f2-8d58-e8a566aeafeb"));
       this.employeeRepository.Save();
+
+
+      //var employee = new Employee("Yunus", "Kaan");
+      //this.employeeRepository.Create(employee);
+
+      //employee.AddTicket(new Guid("e85b1921-8cd3-4d0b-bb64-c61922f0fde9"), 10, 100);
+
+      //this.employeeRepository.Save();
 
       return Ok();
 

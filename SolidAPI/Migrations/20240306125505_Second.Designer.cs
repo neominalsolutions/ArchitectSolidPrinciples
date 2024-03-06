@@ -3,17 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SolidAPI.Data;
 
 #nullable disable
 
-namespace SolidAPI.Data.Migs
+namespace SolidAPI.Migrations
 {
-    [DbContext(typeof(AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(Data.AppContext))]
+    [Migration("20240306125505_Second")]
+    partial class Second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,6 +119,8 @@ namespace SolidAPI.Data.Migs
 
                     b.HasIndex("EmployeeId");
 
+                    b.HasIndex("TicketId");
+
                     b.ToTable("TicketAssigments");
                 });
 
@@ -136,6 +140,12 @@ namespace SolidAPI.Data.Migs
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("SolidAPI.Entities.Ticket", null)
+                        .WithMany("TicketAssigments")
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SolidAPI.Entities.Customer", b =>
@@ -146,6 +156,11 @@ namespace SolidAPI.Data.Migs
             modelBuilder.Entity("SolidAPI.Entities.Employee", b =>
                 {
                     b.Navigation("Tickets");
+                });
+
+            modelBuilder.Entity("SolidAPI.Entities.Ticket", b =>
+                {
+                    b.Navigation("TicketAssigments");
                 });
 #pragma warning restore 612, 618
         }

@@ -13,6 +13,11 @@ namespace Solid.Infra.EF.Repositories
     {
     }
 
+    public override void Update(Employee entity)
+    {
+      base.Update(entity);
+    }
+
     public override Employee FindById(Guid Id)
     {
       return db.Employees.Include(x => x.Tickets).FirstOrDefault(x => x.Id == Id);

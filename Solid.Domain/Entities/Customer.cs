@@ -1,4 +1,4 @@
-﻿namespace SolidAPI.Entities
+﻿namespace Solid.Domain.Entities
 {
   // POCO => herhangi bir teknoloji bağımlılığı olmayan a plain old CLR object olmalıdır. 
   public class Customer

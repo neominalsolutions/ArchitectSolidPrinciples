@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using SolidAPI.Bussiness;
+using Solid.Domain.Bussiness;
+using Solid.Domain.Services;
 using SolidAPI.Repositories;
 using SolidAPI.UseCases;
 

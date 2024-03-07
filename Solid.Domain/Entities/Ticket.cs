@@ -1,4 +1,4 @@
-﻿namespace SolidAPI.Entities
+﻿namespace Solid.Domain.Entities
 {
   public class Ticket // Müşterinin açtığı ticket
   {

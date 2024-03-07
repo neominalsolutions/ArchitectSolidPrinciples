@@ -1,6 +1,8 @@
-﻿using SolidAPI.Repositories;
+﻿
 
-namespace SolidAPI.Bussiness
+using Solid.Domain.Services;
+
+namespace Solid.Domain.Bussiness
 {
   public class TicketManager // Strategy Design Pattern
   {

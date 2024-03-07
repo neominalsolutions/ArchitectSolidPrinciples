@@ -20,4 +20,8 @@
     <Folder Include="Data\Migs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Solid.Domain\Solid.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

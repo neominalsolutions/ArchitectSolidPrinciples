@@ -1,4 +1,5 @@
-﻿using SolidAPI.Entities;
+﻿using Solid.Domain.Entities;
+using Solid.Domain.Services;
 
 namespace SolidAPI.Repositories
 {

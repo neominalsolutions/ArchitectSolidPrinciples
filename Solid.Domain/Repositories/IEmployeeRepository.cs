@@ -1,6 +1,6 @@
-﻿using SolidAPI.Entities;
+﻿using Solid.Domain.Entities;
 
-namespace SolidAPI.Repositories
+namespace Solid.Domain.Services
 {
   public interface IEmployeeRepository
   {

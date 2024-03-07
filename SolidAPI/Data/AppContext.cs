@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Solid.Domain.Entities;
 using SolidAPI.Data.Config;
-using SolidAPI.Entities;
+
 
 namespace SolidAPI.Data
 {

@@ -1,4 +1,6 @@
-﻿namespace SolidAPI.Bussiness
+﻿using Solid.Domain.Services;
+
+namespace Solid.Domain.Bussiness
 {
   public class WeeklyTicketAssigmentService : ITicketAssigment
   {

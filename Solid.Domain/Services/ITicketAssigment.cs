@@ -1,4 +1,4 @@
-﻿namespace SolidAPI.Bussiness
+﻿namespace Solid.Domain.Services
 {
 
   /// <summary>

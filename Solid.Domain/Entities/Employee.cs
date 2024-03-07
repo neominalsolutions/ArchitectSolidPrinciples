@@ -1,4 +1,4 @@
-﻿namespace SolidAPI.Entities
+﻿namespace Solid.Domain.Entities
 {
   public class Employee // Atanacak olan görev bilgisini yöneten sınıf çalışan sınıfı.
   {

@@ -1,4 +1,4 @@
-﻿namespace SolidAPI.Entities
+﻿namespace Solid.Domain.Entities
 {
   public class TicketAssigment // müşterinin açtığı ticketın çalışana atanması
   {

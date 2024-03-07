@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Solid.Domain.Entities;
+using Solid.Domain.Services;
 using SolidAPI.Dtos;
-using SolidAPI.Entities;
-using SolidAPI.Repositories;
 using SolidAPI.UseCases;
 
 namespace SolidAPI.Controllers

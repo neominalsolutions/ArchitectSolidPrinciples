@@ -1,4 +1,4 @@
-﻿using SolidAPI.Bussiness;
+﻿using Solid.Domain.Bussiness;
 using SolidAPI.Dtos;
 using SolidAPI.Repositories;
 

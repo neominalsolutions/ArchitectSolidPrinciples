@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace SolidAPI.Dtos
+namespace Solid.Application.Dtos
 {
 
 

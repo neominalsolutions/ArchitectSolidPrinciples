@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Solid.Application.Dtos;
+using Solid.Application.Features.Tickets;
+using Solid.Application.Features.Tickets.Commands;
 using Solid.Domain.Entities;
 using Solid.Domain.Services;
-using SolidAPI.Dtos;
-using SolidAPI.UseCases;
 
 namespace SolidAPI.Controllers
 {
@@ -12,19 +14,28 @@ namespace SolidAPI.Controllers
   {
     private readonly TicketRequestService ticketRequestService;
     private readonly IEmployeeRepository employeeRepository;
+    private readonly IMediator mediator;
     // DI yaptık
 
-    public EmployeesController(TicketRequestService ticketRequestService, IEmployeeRepository employeeRepository)
+    public EmployeesController(TicketRequestService ticketRequestService, IEmployeeRepository employeeRepository, IMediator mediator)
     {
       this.ticketRequestService = ticketRequestService;
       this.employeeRepository = employeeRepository;
+      this.mediator = mediator;
     }
 
+    [HttpPost("assignTicketHandler")]
+    public async Task<IActionResult> AssignTicketAsync([FromBody] AssignTicketCommand request)
+    {
+
+      var response = await this.mediator.Send(request);
+
+      return Ok(response);
+    }
 
     [HttpPost("assingTicket")]
     public IActionResult AssignTicket([FromBody] AssignTicketRequestDto request)
     {
-
       // use-case
       var response = this.ticketRequestService.AssignTicket(request);
 

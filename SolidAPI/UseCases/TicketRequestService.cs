@@ -4,6 +4,8 @@ using SolidAPI.Repositories;
 
 namespace SolidAPI.UseCases
 {
+  // Domain Katmanaına ait kodların servisleri application katmanı üzerinden çağırılması lazım
+  // Domain servisler presentation katmandan direk olarak çağırılmamalıdır. önerilmez.
   public class TicketRequestService // ApplicationService
   {
     // TicketManager, TicketService // Bussiness yada Domain Service

@@ -15,6 +15,7 @@ namespace SolidAPI.Repositories
 
     public Employee FindByWithTickets(Guid EmployeeId)
     {
+      // AsNoTracking() ile veri tabanındaki nesnelerin stateler takibe alınmıyor.
       var entity = this.appContext.Employees.AsNoTracking().Include(x => x.Tickets).FirstOrDefault(x => x.EmployeeId == EmployeeId);
 
 
@@ -63,7 +64,8 @@ namespace SolidAPI.Repositories
 
         if(employee is not null && employee.Tickets.Count > 0)
         {
-          this.appContext.TicketAssigments.AddRangeAsync(employee.Tickets);
+          // Added State görmediğinden Save ederken Employee içerisinde Ticketlarıda Added State olarak işaretle.
+          this.appContext.TicketAssigments.AddRange(employee.Tickets);
         }
 
        

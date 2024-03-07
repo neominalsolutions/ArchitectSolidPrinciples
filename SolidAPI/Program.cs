@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Solid.Application.Features.Tickets;
 using Solid.Application.Features.Tickets.Commands;
 using Solid.Domain.Bussiness;
-using Solid.Domain.Services;
-using SolidAPI.Repositories;
+using Solid.Domain.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +31,9 @@ builder.Services.AddFluentValidationAutoValidation();
 // 400 validation error direk pipeline üzerinden hata fýrlatacak.
 
 // IoC registeration
-builder.Services.AddScoped<IEmployeeRepository, EFEmployeeRepository>();
+
+builder.Services.AddScoped<IEmployeeRepo, Solid.Infra.EF.Repositories.EFEmployeeRepository>();
+
 builder.Services.AddScoped<TicketRequestService>();
 builder.Services.AddScoped<TicketManager>();
 

@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EF.Infra.Core\EF.Infra.Core.csproj" />
-    <ProjectReference Include="..\Solid.Domain\Solid.Domain.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infra.Core\Infra.Core.csproj" />
   </ItemGroup>
 
 </Project>

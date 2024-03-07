@@ -4,6 +4,7 @@ using Solid.Application.Dtos;
 using Solid.Application.Features.Tickets;
 using Solid.Application.Features.Tickets.Commands;
 using Solid.Domain.Entities;
+using Solid.Domain.Repositories;
 using Solid.Domain.Services;
 
 namespace SolidAPI.Controllers
@@ -13,11 +14,11 @@ namespace SolidAPI.Controllers
   public class EmployeesController : ControllerBase
   {
     private readonly TicketRequestService ticketRequestService;
-    private readonly IEmployeeRepository employeeRepository;
+    private readonly IEmployeeRepo employeeRepository;
     private readonly IMediator mediator;
     // DI yaptık
 
-    public EmployeesController(TicketRequestService ticketRequestService, IEmployeeRepository employeeRepository, IMediator mediator)
+    public EmployeesController(TicketRequestService ticketRequestService, IEmployeeRepo employeeRepository, IMediator mediator)
     {
       this.ticketRequestService = ticketRequestService;
       this.employeeRepository = employeeRepository;
@@ -53,7 +54,7 @@ namespace SolidAPI.Controllers
 
       employee.AddTicket(new Guid("e85b1921-8cd3-4d0b-bb64-c61922f0fde9"), 10, 100);
 
-      this.employeeRepository.Save(employee);
+      //this.employeeRepository.Save(employee);
 
       return Ok();
 

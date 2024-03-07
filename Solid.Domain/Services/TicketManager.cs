@@ -1,14 +1,15 @@
 ﻿
 
+using Solid.Domain.Repositories;
 using Solid.Domain.Services;
 
 namespace Solid.Domain.Bussiness
 {
   public class TicketManager // Strategy Design Pattern
   {
-    private readonly IEmployeeRepository employeeRepository;
+    private readonly IEmployeeRepo employeeRepository;
 
-    public TicketManager(IEmployeeRepository employeeRepository)
+    public TicketManager(IEmployeeRepo employeeRepository)
     {
       this.employeeRepository = employeeRepository;
     }
@@ -27,7 +28,7 @@ namespace Solid.Domain.Bussiness
         if(emp is not null)
         {
           emp.AddTicket(ticketId, estimatedHour, ticketAssigmentType);
-          employeeRepository.Save(emp);
+          //employeeRepository.Save(emp);
         } 
         else
         {

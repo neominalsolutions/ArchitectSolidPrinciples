@@ -5,13 +5,17 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SolidAPI", "SolidAPI\SolidAPI.csproj", "{9147F764-5C13-409C-9963-6205E70DCA36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Domain", "Solid.Domain\Solid.Domain.csproj", "{19A4C35A-6AC6-40DC-8084-D4DADF3C6C69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solid.Domain", "Solid.Domain\Solid.Domain.csproj", "{19A4C35A-6AC6-40DC-8084-D4DADF3C6C69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Application", "Solid.Application\Solid.Application.csproj", "{9C04DD96-FD3E-4C15-8F3B-7CD352698652}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solid.Application", "Solid.Application\Solid.Application.csproj", "{9C04DD96-FD3E-4C15-8F3B-7CD352698652}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Infra", "Solid.Infra\Solid.Infra.csproj", "{368F7E8C-D343-4048-AE80-80B69B6D20DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solid.Infra", "Solid.Infra\Solid.Infra.csproj", "{368F7E8C-D343-4048-AE80-80B69B6D20DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solid.Persistance", "Solid.Persistance\Solid.Persistance.csproj", "{74EA808B-0714-49FB-A040-FDC5789F04B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solid.Persistance", "Solid.Persistance\Solid.Persistance.csproj", "{74EA808B-0714-49FB-A040-FDC5789F04B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Core", "Infra.Core\Infra.Core.csproj", "{3F8E50CD-C3EE-46EF-9C03-1173C5A3DC3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF.Infra.Core", "EF.Infra.Core\EF.Infra.Core.csproj", "{C7F8D9DB-3E90-4DB5-BCD2-DF68D0C6467B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{74EA808B-0714-49FB-A040-FDC5789F04B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74EA808B-0714-49FB-A040-FDC5789F04B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74EA808B-0714-49FB-A040-FDC5789F04B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F8E50CD-C3EE-46EF-9C03-1173C5A3DC3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F8E50CD-C3EE-46EF-9C03-1173C5A3DC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F8E50CD-C3EE-46EF-9C03-1173C5A3DC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F8E50CD-C3EE-46EF-9C03-1173C5A3DC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7F8D9DB-3E90-4DB5-BCD2-DF68D0C6467B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7F8D9DB-3E90-4DB5-BCD2-DF68D0C6467B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7F8D9DB-3E90-4DB5-BCD2-DF68D0C6467B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7F8D9DB-3E90-4DB5-BCD2-DF68D0C6467B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

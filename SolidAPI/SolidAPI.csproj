@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Solid.Application\Solid.Application.csproj" />
     <ProjectReference Include="..\Solid.Domain\Solid.Domain.csproj" />
+    <ProjectReference Include="..\Solid.Infra\Solid.Infra.csproj" />
   </ItemGroup>
 
 </Project>

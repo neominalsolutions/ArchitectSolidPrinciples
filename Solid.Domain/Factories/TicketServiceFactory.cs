@@ -1,4 +1,5 @@
 ﻿using Solid.Domain.Bussiness;
+using Solid.Domain.Repositories;
 using Solid.Domain.Services;
 
 namespace Solid.Domain.Factories
@@ -9,7 +10,7 @@ namespace Solid.Domain.Factories
         // gelen parametreye göre hangi instance döndüreceğine karar verdik.
         // IEmployeeRepository employeeRepositor method dependecy Injection
 
-        public static ITicketAssigment GetInstance(TicketAssigmentType ticketAssigmentType, IEmployeeRepository employeeRepository)
+        public static ITicketAssigment GetInstance(TicketAssigmentType ticketAssigmentType, IEmployeeRepo employeeRepository)
         {
             ITicketAssigment ticketAssigment;
 

@@ -1,5 +1,6 @@
 ﻿
 
+using Solid.Domain.Repositories;
 using Solid.Domain.Services;
 
 namespace Solid.Domain.Bussiness
@@ -7,9 +8,9 @@ namespace Solid.Domain.Bussiness
   public class MontlyTicketAssignmentService : ITicketAssigment
   {
     // ne kadarlık bir ticket assign edilmiş bunu almam lazım
-    private readonly IEmployeeRepository employeeRepository;
+    private readonly IEmployeeRepo employeeRepository;
 
-    public MontlyTicketAssignmentService(IEmployeeRepository employeeRepository)
+    public MontlyTicketAssignmentService(IEmployeeRepo employeeRepository)
     {
       this.employeeRepository = employeeRepository;
     }
@@ -23,7 +24,7 @@ namespace Solid.Domain.Bussiness
 
       var monthEndDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DaysInMonthCount);
 
-      var emp = employeeRepository.FindByWithTickets(employeeId);
+      var emp = employeeRepository.FindById(employeeId);
       var monthlyTicketHours = emp.Tickets.Where(x => x.AssignedAt.Value.Date >= monthStartDate.Date && x.AssignedAt.Value.Date <= monthEndDate.Date).Sum(x => x.EstimatedHour);
 
       if(estimatedHour + monthlyTicketHours > 160)

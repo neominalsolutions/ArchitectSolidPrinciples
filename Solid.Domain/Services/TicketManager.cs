@@ -1,6 +1,7 @@
 ﻿
 
 using Infra.Core.Contracts;
+using Solid.Domain.Entities;
 using Solid.Domain.Repositories;
 using Solid.Domain.Services;
 
@@ -10,11 +11,13 @@ namespace Solid.Domain.Bussiness
   {
     private readonly IEmployeeRepo employeeRepository;
     private readonly IUnitOfWork unitOfWork;
+    private readonly ITicketAssigmentRepo ticketAssigmentRepo;
 
-    public TicketManager(IEmployeeRepo employeeRepository, IUnitOfWork unitOfWork)
+    public TicketManager(IEmployeeRepo employeeRepository, IUnitOfWork unitOfWork, ITicketAssigmentRepo ticketAssigmentRepo)
     {
       this.employeeRepository = employeeRepository;
       this.unitOfWork = unitOfWork;
+      this.ticketAssigmentRepo = ticketAssigmentRepo;
     }
 
     public void AssignTicket(Guid ticketId,Guid employeeId, int ticketAssigmentType, int estimatedHour)
@@ -30,8 +33,12 @@ namespace Solid.Domain.Bussiness
         
         if(emp is not null)
         {
-          emp.AddTicket(ticketId, estimatedHour, ticketAssigmentType);
-          employeeRepository.Update(emp);
+
+          var ticketAssigment = new TicketAssigment(ticketId, employeeId,estimatedHour, ticketAssigmentType);
+          this.ticketAssigmentRepo.Create(ticketAssigment);
+
+          // emp.AddTicket(ticketId, estimatedHour, ticketAssigmentType);
+          // employeeRepository.Update(emp);
           this.unitOfWork.Save();
           // veri tabanına yansırma işlemleri UnitOfWork üzerinden yapılsın.
         } 

@@ -9,6 +9,7 @@ namespace Solid.Domain.Bussiness
   {
     // ne kadarlık bir ticket assign edilmiş bunu almam lazım
     private readonly IEmployeeRepo employeeRepository;
+ 
 
     public MontlyTicketAssignmentService(IEmployeeRepo employeeRepository)
     {

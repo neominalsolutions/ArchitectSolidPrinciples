@@ -6,6 +6,7 @@ using Solid.Application.Features.Tickets;
 using Solid.Application.Features.Tickets.Commands;
 using Solid.Domain.Bussiness;
 using Solid.Domain.Repositories;
+using Solid.Infra.EF.Repositories;
 using Solid.Infra.EF.UnitOfWorks;
 using Solid.Persistance.EF.Contexts;
 
@@ -45,6 +46,7 @@ builder.Services.AddFluentValidationAutoValidation();
 
 // Infra Layer
 builder.Services.AddScoped<IEmployeeRepo, Solid.Infra.EF.Repositories.EFEmployeeRepository>();
+builder.Services.AddScoped<ITicketAssigmentRepo, EFTicketAssigmentRepository>();
 
 builder.Services.AddScoped<IUnitOfWork, EFAppContextUnitOfWork>();
 

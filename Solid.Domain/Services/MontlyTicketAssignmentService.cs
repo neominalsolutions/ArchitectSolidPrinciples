@@ -25,7 +25,7 @@ namespace Solid.Domain.Bussiness
       var monthEndDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DaysInMonthCount);
 
       var emp = employeeRepository.FindById(employeeId);
-      var monthlyTicketHours = emp.Tickets.Where(x => x.AssignedAt.Value.Date >= monthStartDate.Date && x.AssignedAt.Value.Date <= monthEndDate.Date).Sum(x => x.EstimatedHour);
+      var monthlyTicketHours = emp.Tickets.Where(x => x.AssignedAt.Date >= monthStartDate.Date && x.AssignedAt.Date <= monthEndDate.Date).Sum(x => x.EstimatedHour);
 
       if(estimatedHour + monthlyTicketHours > 160)
       {

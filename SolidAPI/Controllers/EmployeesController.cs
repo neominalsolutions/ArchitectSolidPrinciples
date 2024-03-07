@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Infra.Core.Contracts;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Solid.Application.Dtos;
 using Solid.Application.Features.Tickets;
@@ -13,32 +14,24 @@ namespace SolidAPI.Controllers
   [ApiController]
   public class EmployeesController : ControllerBase
   {
-    private readonly TicketRequestService ticketRequestService;
+    
     private readonly IEmployeeRepo employeeRepository;
     private readonly IMediator mediator;
+    private readonly IUnitOfWork unitOfWork;
     // DI yaptık
 
-    public EmployeesController(TicketRequestService ticketRequestService, IEmployeeRepo employeeRepository, IMediator mediator)
+    public EmployeesController(IEmployeeRepo employeeRepository, IMediator mediator, IUnitOfWork unitOfWork)
     {
-      this.ticketRequestService = ticketRequestService;
       this.employeeRepository = employeeRepository;
       this.mediator = mediator;
+      this.unitOfWork = unitOfWork;
     }
 
-    [HttpPost("assignTicketHandler")]
+    [HttpPost("assingTicket")]
     public async Task<IActionResult> AssignTicketAsync([FromBody] AssignTicketCommand request)
     {
 
       var response = await this.mediator.Send(request);
-
-      return Ok(response);
-    }
-
-    [HttpPost("assingTicket")]
-    public IActionResult AssignTicket([FromBody] AssignTicketRequestDto request)
-    {
-      // use-case
-      var response = this.ticketRequestService.AssignTicket(request);
 
       return Ok(response);
     }
@@ -49,12 +42,20 @@ namespace SolidAPI.Controllers
     {
 
 
-      var employee = new Employee("Yunus", "Kaan");
+      // 1.işlem
+      var employee = new Employee("Yunus3", "Kaan");
       this.employeeRepository.Create(employee);
 
-      employee.AddTicket(new Guid("e85b1921-8cd3-4d0b-bb64-c61922f0fde9"), 10, 100);
+      //2.işlem
+      var employee1 = new Employee("Yunus4", "Kaan1");
+      this.employeeRepository.Create(employee1);
 
-      //this.employeeRepository.Save(employee);
+     
+      // 3.işlem
+      employee.AddTicket(new Guid("e85b1921-8cd3-4d0b-bb64-c61922f0fde9"), 12, 100);
+
+      this.unitOfWork.AutoSave(); // yukarıdaki tüm işlemleri tek bir transaction içinde yapacağız.
+
 
       return Ok();
 

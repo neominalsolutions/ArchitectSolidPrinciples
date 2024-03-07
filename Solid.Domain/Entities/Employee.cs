@@ -2,7 +2,7 @@
 {
   public class Employee // Atanacak olan görev bilgisini yöneten sınıf çalışan sınıfı.
   {
-    public Guid EmployeeId { get; init; }
+    public Guid Id { get; init; }
     public string Name { get; private set; }
     public string SurName { get; private set; }
     public string? Department { get; set; } // Optional
@@ -19,9 +19,9 @@
 
     public Employee(string name, string surname)
     {
+      Id = Guid.NewGuid();
       Name = name.Trim();
       SurName = surname.Trim().ToUpper();
-      EmployeeId = Guid.NewGuid();
     }
 
     // çalışana bir atama olduğu için çalışan üzerinden bir method ile süreci işletiyoruz.
@@ -29,7 +29,7 @@
     // Buna clean code Information Expert ismi verilir.
     public void AddTicket(Guid TicketId, int estimatedHour, int ticketAssigmentType)
     {
-      ticketAssigments.Add(new TicketAssigment(employeeId:EmployeeId,ticketId:TicketId,estimatedHour:estimatedHour, ticketAssigmentType: ticketAssigmentType));
+      ticketAssigments.Add(new TicketAssigment(employeeId: new Guid("210eddb8-fb47-4562-9613-63310ce32799"), ticketId:TicketId,estimatedHour:estimatedHour, ticketAssigmentType: ticketAssigmentType));
     }
 
 

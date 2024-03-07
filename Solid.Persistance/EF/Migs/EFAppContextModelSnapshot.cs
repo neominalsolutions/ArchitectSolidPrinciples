@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SolidAPI.Data;
+using Solid.Persistance.EF.Contexts;
 
 #nullable disable
 
-namespace SolidAPI.Migrations
+namespace Solid.Persistance.EF.Migs
 {
-    [DbContext(typeof(Data.AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(EFAppContext))]
+    partial class EFAppContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -22,9 +22,9 @@ namespace SolidAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("SolidAPI.Entities.Customer", b =>
+            modelBuilder.Entity("Solid.Domain.Entities.Customer", b =>
                 {
-                    b.Property<Guid>("CustomerId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -41,14 +41,14 @@ namespace SolidAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CustomerId");
+                    b.HasKey("Id");
 
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("SolidAPI.Entities.Employee", b =>
+            modelBuilder.Entity("Solid.Domain.Entities.Employee", b =>
                 {
-                    b.Property<Guid>("EmployeeId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -63,14 +63,14 @@ namespace SolidAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("EmployeeId");
+                    b.HasKey("Id");
 
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("SolidAPI.Entities.Ticket", b =>
+            modelBuilder.Entity("Solid.Domain.Entities.Ticket", b =>
                 {
-                    b.Property<Guid>("TicketId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -85,20 +85,20 @@ namespace SolidAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TicketId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Tickets");
                 });
 
-            modelBuilder.Entity("SolidAPI.Entities.TicketAssigment", b =>
+            modelBuilder.Entity("Solid.Domain.Entities.TicketAssigment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("AssignedAt")
+                    b.Property<DateTime>("AssignedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("EmployeeId")
@@ -117,35 +117,48 @@ namespace SolidAPI.Migrations
 
                     b.HasIndex("EmployeeId");
 
+                    b.HasIndex("TicketId");
+
                     b.ToTable("TicketAssigments");
                 });
 
-            modelBuilder.Entity("SolidAPI.Entities.Ticket", b =>
+            modelBuilder.Entity("Solid.Domain.Entities.Ticket", b =>
                 {
-                    b.HasOne("SolidAPI.Entities.Customer", null)
+                    b.HasOne("Solid.Domain.Entities.Customer", null)
                         .WithMany("Tickets")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SolidAPI.Entities.TicketAssigment", b =>
+            modelBuilder.Entity("Solid.Domain.Entities.TicketAssigment", b =>
                 {
-                    b.HasOne("SolidAPI.Entities.Employee", null)
+                    b.HasOne("Solid.Domain.Entities.Employee", null)
                         .WithMany("Tickets")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Solid.Domain.Entities.Ticket", null)
+                        .WithMany("TicketAssigments")
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("SolidAPI.Entities.Customer", b =>
+            modelBuilder.Entity("Solid.Domain.Entities.Customer", b =>
                 {
                     b.Navigation("Tickets");
                 });
 
-            modelBuilder.Entity("SolidAPI.Entities.Employee", b =>
+            modelBuilder.Entity("Solid.Domain.Entities.Employee", b =>
                 {
                     b.Navigation("Tickets");
+                });
+
+            modelBuilder.Entity("Solid.Domain.Entities.Ticket", b =>
+                {
+                    b.Navigation("TicketAssigments");
                 });
 #pragma warning restore 612, 618
         }

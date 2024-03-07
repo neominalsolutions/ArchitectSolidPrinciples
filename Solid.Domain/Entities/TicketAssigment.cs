@@ -7,7 +7,7 @@
     public Guid EmployeeId { get; init; }
     public int EstimatedHour { get; init; }
 
-    public DateTime? AssignedAt { get; init; }
+    public DateTime AssignedAt { get; init; }
 
     public int TicketAssigmentType { get; init; }
 

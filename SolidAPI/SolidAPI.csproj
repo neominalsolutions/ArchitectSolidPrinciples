@@ -18,13 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migs\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Solid.Application\Solid.Application.csproj" />
     <ProjectReference Include="..\Solid.Domain\Solid.Domain.csproj" />
     <ProjectReference Include="..\Solid.Infra\Solid.Infra.csproj" />
+    <ProjectReference Include="..\Solid.Persistance\Solid.Persistance.csproj" />
   </ItemGroup>
 
 </Project>
